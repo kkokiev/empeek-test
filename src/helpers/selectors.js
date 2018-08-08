@@ -1,3 +1,3 @@
-export const getItems = state => state.item;
+export const getItems = state => state.items;
 
 export const getSelectedItem = state => state.helpers.selectedItem;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { addComment } from '../../../../services/item';
+import { addComment } from '../../../../services/items';
 
 class CommentForm extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { addItem } from '../../../../services/item';
+import { addItem } from '../../../../services/items';
 
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
