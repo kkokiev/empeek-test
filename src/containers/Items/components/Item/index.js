@@ -6,6 +6,21 @@ import get from 'lodash/get';
 import Button from '../../../../components/Button';
 
 class Item extends Component {
+  shouldComponentUpdate(nextProps) {
+    const { selected, item } = this.props;
+    const { selected: nextSelected, item: nextItem } = nextProps;
+
+    if (get(item, ['comments', 'length']) !== get(nextItem, ['comments', 'length'])) {
+      return true;
+    }
+
+    if (selected !== nextSelected) {
+      return true;
+    }
+
+    return false;
+  }
+
   handleSelect = () => {
     const { item, handleSelect } = this.props;
 
