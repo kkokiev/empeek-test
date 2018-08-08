@@ -26,7 +26,7 @@ const itemsStore = (state = INIT_STATE, action) => {
     case DELETE_ITEM: {
       const { payload: { id } } = action;
       const filteredItems = state.filter(item => item.id !== id);
-      return [ ...filteredItems ];
+      return [...filteredItems];
     }
 
     default: {

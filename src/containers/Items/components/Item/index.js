@@ -6,17 +6,28 @@ import get from 'lodash/get';
 import Button from '../../../../components/Button';
 
 class Item extends Component {
-  handleDelete = () => {
+  handleSelect = () => {
+    const { item, handleSelect } = this.props;
+
+    handleSelect(item.id);
+  }
+
+  handleDelete = (e) => {
+    e.stopPropagation();
     const { item, handleDelete } = this.props;
 
     handleDelete(item.id);
   }
 
   render() {
-    const { item } = this.props;
+    const { item, selected } = this.props;
 
     return (
-      <li className="d-flex align-items-center item">
+      <li
+        className={`d-flex align-items-center item ${selected ? 'item-selected' : ''}`}
+        onClick={this.handleSelect}
+        role="presentation"
+      >
         <div className="flex-grow-1 flex-shrink-1 pr-3">
           <span className="mr-2">{item.name}</span>
           {get(item, ['comments', 'length']) &&
@@ -38,7 +49,9 @@ class Item extends Component {
 
 Item.propTypes = {
   item: PropTypes.object.isRequired,
-  handleDelete: PropTypes.func.isRequired
+  handleDelete: PropTypes.func.isRequired,
+  handleSelect: PropTypes.func.isRequired,
+  selected: PropTypes.bool.isRequired
 };
 
 export default Item;
