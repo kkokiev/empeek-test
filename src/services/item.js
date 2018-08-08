@@ -1,7 +1,9 @@
 import { v4 } from 'uuid';
+import get from 'lodash/get';
 
 const ADD_ITEM = 'ADD_ITEM';
 const DELETE_ITEM = 'DELETE_ITEM';
+const ADD_COMMENT = 'ADD_COMMENT';
 
 export const addItem = payload => ({
   type: ADD_ITEM,
@@ -14,9 +16,12 @@ export const deleteItem = payload => ({
   payload
 });
 
-const INIT_STATE = [];
+export const addComment = payload => ({
+  type: ADD_COMMENT,
+  payload
+});
 
-const itemsStore = (state = INIT_STATE, action) => {
+const itemsStore = (state = [], action) => {
   switch (action.type) {
     case ADD_ITEM: {
       const { payload, id } = action;
@@ -27,6 +32,14 @@ const itemsStore = (state = INIT_STATE, action) => {
       const { payload: { id } } = action;
       const filteredItems = state.filter(item => item.id !== id);
       return [...filteredItems];
+    }
+
+    case ADD_COMMENT: {
+      const { payload: { comment, id } } = action;
+      const index = state.findIndex(item => item.id === id);
+      const newItem = { ...state[index], comments: [...get(state[index], 'comments', []), { comment }] };
+
+      return [...state.slice(0, index), newItem, ...state.slice(index + 1, state.length)];
     }
 
     default: {

@@ -31,7 +31,7 @@ class Item extends Component {
         <div className="flex-grow-1 flex-shrink-1 pr-3">
           <span className="mr-2">{item.name}</span>
           {get(item, ['comments', 'length']) &&
-            <span className="badge badge-success">{item.coments.length}</span>
+            <span className="badge badge-success">{item.comments.length}</span>
           }
         </div>
         <div className="item-button-wrap">

@@ -1,24 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { getSelectedItem } from '../../helpers/selectors';
 
 import Panel from '../../components/Panel';
 import CommentsList from './components/CommentsList';
 import CommentForm from './components/CommentForm';
 
-class Comments extends Component {
-  render () {
-    return (
-      <Panel>
-        <h2>Comments #2</h2>
-        <CommentsList />
-        <CommentForm />
-      </Panel>
-    );
+const Comments = ({ selectedItem }) => {
+  if (!selectedItem) {
+    return null;
   }
-}
+
+  return (
+    <Panel>
+      <CommentsList />
+      <CommentForm selectedItem={selectedItem} />
+    </Panel>
+  );
+};
 
 Comments.propTypes = {
+  selectedItem: PropTypes.string
+};
 
-}
+const mapStateToProps = state => ({
+  selectedItem: getSelectedItem(state)
+});
 
-export default Comments;
+export default connect(mapStateToProps)(Comments);

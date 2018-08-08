@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { deleteItem } from '../../../../services/item';
 import { selectItem } from '../../../../services/helpers';
+import { getItems, getSelectedItem } from '../../../../helpers/selectors';
 
 import Item from '../Item';
 
@@ -13,7 +14,12 @@ class ItemsList extends Component {
   }
 
   handleDelete = (id) => {
-    this.props.dispatch(deleteItem({ id }));
+    const { dispatch, selectedItem } = this.props;
+
+    dispatch(deleteItem({ id }));
+    if (id === selectedItem) {
+      dispatch(selectItem({ id: null }));
+    }
   }
 
   render() {
@@ -43,8 +49,8 @@ ItemsList.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  items: state.item,
-  selectedItem: state.helpers.selectedItem
+  items: getItems(state),
+  selectedItem: getSelectedItem(state)
 });
 
 export default connect(mapStateToProps)(ItemsList);

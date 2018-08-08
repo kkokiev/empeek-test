@@ -1,6 +1,5 @@
 .shell {
   height: 100vh;
-  overflow-y: auto;
 }
 
 .shell-sidebar {
@@ -9,6 +8,7 @@
 
 .shell-main {
   background-color: #f9f9f9;
+  overflow-y: scroll;
 }
 
 .sidebar {
@@ -88,6 +88,10 @@
   height: 50px;
   width: 50px;
   background-color: #ff8a00;
+}
+
+.comment:nth-child(2n) .comment-avatar {
+  background-color: #47568c;
 }
 
 .comment-form-avatar {
