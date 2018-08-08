@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import { addItem } from '../../../../services/item';
+
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 
 class ItemsForm extends Component {
   state = {
-    text: ''
+    name: ''
   }
 
   handleInputChange = (e) => {
-    console.log(e.target.value);
+    this.setState({ name: e.target.value });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.dispatch(addItem({ name: this.state.name }));
+    this.setState({ name: '' });
   }
 
   render() {
@@ -24,7 +29,7 @@ class ItemsForm extends Component {
           <Input
             className="form-control w-100"
             type="text"
-            value={this.state.text}
+            value={this.state.name}
             placeholder="Type name here..."
             onChange={this.handleInputChange}
           />
@@ -44,7 +49,7 @@ class ItemsForm extends Component {
 }
 
 ItemsForm.propTypes = {
-
+  dispatch: PropTypes.func.isRequired
 };
 
-export default ItemsForm;
+export default connect()(ItemsForm);
