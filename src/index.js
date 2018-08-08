@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import throttle from 'lodash/throttle';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './index.css';
 import reducer from './services/store';

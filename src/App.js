@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+import Sidebar from './components/Sidebar';
+import ItemsPage from './pages/ItemsPage';
+
+const App = () =>
+  <div className="d-flex align-items-stretch shell">
+    <div className="h-100 shell-sidebar">
+      <Sidebar />
+    </div>
+    <main className="flex-grow-1 flex-shrink-1 h-100 shell-main">
+      <ItemsPage />
+    </main>
+  </div>;
 
 export default App;

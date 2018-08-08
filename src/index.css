@@ -1,5 +1,46 @@
-body {
-  margin: 0;
+.shell {
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.shell-sidebar {
+  width: 270px;
+}
+
+.shell-main {
+  background-color: #f9f9f9;
+}
+
+.sidebar {
+  padding: 30px;
+  background-color: #2b2f3e;
+}
+
+.sidebar-title {
+  font-size: 2.4rem;
+  font-weight: 400;
+}
+
+.main {
+  padding: 30px;
+}
+
+.page {
+  padding: 30px;
+}
+
+.panel {
+  padding: 20px;
+  padding-bottom: 15px;
+  box-shadow: 0 0 5px 3px rgba(0,0,0, .3);
+}
+
+.items-list {
   padding: 0;
-  font-family: sans-serif;
+  list-style: none;
+}
+
+.item {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
 }
