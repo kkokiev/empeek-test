@@ -3,6 +3,7 @@ import React from 'react';
 import Page from '../../components/Page';
 import PageColumn from '../../components/PageColumn';
 import Items from '../../containers/Items';
+import Comments from '../../containers/Comments';
 
 const ItemsPage = () =>
   <Page>
@@ -10,7 +11,7 @@ const ItemsPage = () =>
       <Items />
     </PageColumn>
     <PageColumn>
-      comments
+      <Comments />
     </PageColumn>
   </Page>;
 
